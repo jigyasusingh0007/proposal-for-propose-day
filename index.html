@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Only For You Diksha ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:black;
+}
+
+/* Phone frame */
+.container{
+width:360px;
+height:640px;
+border-radius:25px;
+overflow:hidden;
+position:relative;
+box-shadow:0 0 50px rgba(255,0,90,0.6);
+background:black;
+}
+
+/* INTRO */
+.intro{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+background:linear-gradient(180deg,#111,#000);
+z-index:2;
+}
+
+.openBtn{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#ff4e78;
+color:white;
+cursor:pointer;
+}
+
+/* PROPOSAL */
+.proposal{
+position:absolute;
+width:100%;
+height:100%;
+display:none; /* hidden initially */
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:30px;
+}
+
+.name{
+font-size:28px;
+margin-bottom:20px;
+}
+
+.text{
+font-size:15px;
+line-height:1.6;
+margin-bottom:25px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+}
+
+button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+.yes{
+background:#ff4e78;
+color:white;
+}
+
+.no{
+background:white;
+color:#ff4e78;
+}
+
+/* Celebration */
+.celebration{
+position:absolute;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+color:#ff4e78;
+font-size:22px;
+}
+
+/* Fireworks */
+.firework{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+from{
+transform:translate(0,0);
+opacity:1;
+}
+to{
+transform:translate(var(--x),var(--y));
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<audio id="music" src="song.mp3" loop></audio>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+<h1>Something Special For You ❤️</h1>
+<button class="openBtn" onclick="openProposal()">Open ✨</button>
+</div>
+
+<!-- PROPOSAL -->
+<div class="proposal" id="proposal">
+
+<div class="name">Only For You Diksha ❤️</div>
+
+<div class="text">
+Diksha, you mean more to me than words can express.
+Being with you feels peaceful, beautiful, and right.
+<br><br>
+I don’t want to pressure you.
+I just want your honest heart.
+<br><br>
+Will you be mine? 💍
+</div>
+
+<form id="form" action="https://formsubmit.co/jigyasusingh0007@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="Response" id="response">
+
+<div class="buttons">
+<button type="button" class="yes" onclick="yesClicked()">Yes 💖</button>
+<button type="button" class="no" onclick="noClicked()">No 💔</button>
+</div>
+</form>
+
+</div>
+
+<!-- Celebration -->
+<div class="celebration" id="celebration">
+You made my day 💖
+
+I Love You 💗
+</div>
+
+</div>
+
+<script>
+
+function openProposal(){
+document.getElementById("intro").style.display="none";
+document.getElementById("proposal").style.display="flex";
+document.getElementById("music").play();
+}
+
+function yesClicked(){
+document.getElementById("response").value="YES 💖";
+fireworks();
+
+document.getElementById("celebration").style.display="flex";
+
+setTimeout(()=>{
+document.getElementById("form").submit();
+},2500);
+}
+
+function noClicked(){
+document.getElementById("response").value="NO 💔";
+document.getElementById("form").submit();
+}
+
+function fireworks(){
+for(let i=0;i<80;i++){
+let f=document.createElement("div");
+f.className="firework";
+
+let colors=["#ff4e78","#ffcc00","#00f7ff","#ffffff"];
+f.style.background=colors[Math.floor(Math.random()*4)];
+
+let x=(Math.random()-0.5)*300+"px";
+let y=(Math.random()-0.5)*300+"px";
+
+f.style.setProperty('--x',x);
+f.style.setProperty('--y',y);
+
+f.style.left="50%";
+f.style.top="50%";
+
+document.querySelector(".container").appendChild(f);
+
+setTimeout(()=>f.remove(),1000);
+}
+}
+
+</script>
+
+</body>
+</html>
